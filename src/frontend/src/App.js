@@ -1,11 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-import { TeamPage } from './Pages/TeamPage';
+import  {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { TeamPage } from './pages/TeamPage';
+import { MatchPage } from './pages/MatchPage';
 
 function App() {
   return (
     <div className="App">
-      <TeamPage/>
+      <Router>
+        <Routes>
+          <Route path="/teams/:teamName" element = {<TeamPage />} />
+          <Route path="/teams/:teamName/matches/:year" element = {<MatchPage />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
