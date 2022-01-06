@@ -2,9 +2,10 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    padding-left: 25px;
-    padding-top: 25px;
-
+    padding-left: 30px;
+    padding-top: 30px;
+    margin-bottom: 1px;
+        
     .main-details {
         padding-top: 20px;
         & > p {

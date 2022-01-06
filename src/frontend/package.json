@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp -r /Users/siddharthjain/Desktop/ipl-dashboard/src/frontend/build/. /Users/siddharthjain/Desktop/ipl-dashboard/src/main/resources/public",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
