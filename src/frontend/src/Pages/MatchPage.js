@@ -30,6 +30,9 @@ export const MatchPage = () => {
     let currentList = matches;
     let filteredList = [];
     switch (filterTerm) {
+      case "filter-by":
+        filteredList = currentList;
+        break;
       case "win":
         filteredList = currentList.filter(
           (item) => item.matchWinner === teamName
@@ -69,6 +72,9 @@ export const MatchPage = () => {
     if (filteredList && filteredList.length > 0) {
       setFilteredMatch(filteredList);
     }
+    else{
+      setFilteredMatch([]);
+    }
   };
 
   const editSearchTerm = (event) => {
@@ -78,9 +84,18 @@ export const MatchPage = () => {
     let filteredList = [];
     filteredList = currentList.filter(
       (item) =>
-        item.city.toLowerCase().includes(searchTerm.toLowerCase()) || //City
+        item.date.toLowerCase().includes(searchTerm.toLowerCase()) || //date
+        item.team2.toLowerCase().includes(searchTerm.toLowerCase()) || //opponent
+        item.city.toLowerCase().includes(searchTerm.toLowerCase()) || //city
+        item.tossWinner.toLowerCase().includes(searchTerm.toLowerCase()) || //toss winner
+        item.tossDecision.toLowerCase().includes(searchTerm.toLowerCase()) || //toss decision
         item.playerOfMatch.toLowerCase().includes(searchTerm.toLowerCase()) || //player of match
+        item.firstInnings.toLowerCase().includes(searchTerm.toLowerCase()) || //first innings
+        item.secondInnings.toLowerCase().includes(searchTerm.toLowerCase()) || //second innings
         item.venue.toLowerCase().includes(searchTerm.toLowerCase()) || //venue
+        item.matchWinner.toLowerCase().includes(searchTerm.toLowerCase()) || //match winner
+        item.result.toLowerCase().includes(searchTerm.toLowerCase()) || //result
+        item.resultMargin.toLowerCase().includes(searchTerm.toLowerCase()) || //result margin
         item.umpire1.toLowerCase().includes(searchTerm.toLowerCase()) || //umpire1
         item.umpire2.toLowerCase().includes(searchTerm.toLowerCase()) //umpire2
     );
@@ -100,7 +115,7 @@ export const MatchPage = () => {
           {teamName} in {year}
         </h1>
         <select onChange={editFilterTerm} value={filterTerm}>
-          <option value="" selected>
+          <option value="filter-by" selected>
             Filter By
           </option>
           <option value="win">Wins</option>
@@ -126,9 +141,7 @@ export const MatchPage = () => {
           ))
         ) : (
           <div className="col">
-            <p style={{ textAlign: "center", padding: "20%" }}>
-              No matches found
-            </p>
+            <p> No matches found </p>
           </div>
         )}
       </div>

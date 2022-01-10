@@ -8,7 +8,7 @@ import './TeamPage.scss';
 export const TeamPage = () => {
 
     const [team, setTeam] = useState({matches: []});
-    const {teamName, apple} = useParams();
+    const {teamName} = useParams();
 
     useEffect(
         () => {
@@ -20,6 +20,10 @@ export const TeamPage = () => {
          fetchTeam();
         }, [teamName]
     );
+
+    if (!team || !team.teamName) {
+        return <h1>Team not found</h1>
+    }
 
     return (
         <div className="TeamPage">
